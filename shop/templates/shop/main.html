@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>PrideUp</title>
+    
+</head>
+
+<body style= "background:url(https://live.staticflickr.com/7113/7449536534_2a0eff4ce6.jpg); background-repeat:no-repeat; background-attachment:fixed; background-size:100% 100%;">
+
+  <header class="text-gray-600 body-font">
+    <div class="container mx-auto flex flex-wrap p-10 flex-col md:flex-row items-center">
+      <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+        <span class="text-5xl font-serif font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-purple-500 via-green-500 to-red-500">PrideUp</span>
+      </a>
+      <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+        <a href="{% url 'about' %}" class="mr-5 font-bold text-red-800 hover:text-red-700">About us</a>
+        <a href="{% url 'contact' %}" class="mr-5 font-bold text-red-800 hover:text-red-700">Contact us</a>
+        <a href="{% url 'events' %}" class="mr-5 font-bold text-red-800 hover:text-red-700">Events</a>
+        <a class="mr-5 font-bold text-red-800 hover:text-red-700"></a>
+      </nav>
+    
+    </div>
+  </header>
+      {% if messages %}
+        {% for message in messages %}
+        <div id="alert_box" class="w-full bg-green-100 border border-green-400 text-black-700 px-4 py-3 rounded relative" role="alert">
+          <span class="block sm:inline">{{message}}</span>
+          <span id="close_button" class="absolute top-0 bottom-0 right-0 px-4 py-3">
+            <svg class="fill-current h-6 w-6 text-black-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+          </span>
+        </div>
+        {% endfor %}
+      {% endif %}
+  <div class="px-8 py-16">
+    <div class="grid gap-8 items-start justify-center">
+      <div class="relative group">
+        <div class="absolute -inset-0.5 border-4 bg-gradient-to-r from-yellow-300 via-red-300 to-purple-300 border-pink-700 rounded-lg blur opacity-50 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+        <a href="{% url 'shop_homepage' %}">
+        <button class="relative px-7 py-4 rounded-lg leading-none flex items-center divide-x divide-gray-600">
+          <span class="flex items-center space-x-5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            <span class="pr-6 text-gray-900">PrideKart</span>
+          </span>
+          <span class="pl-6 text-gray-900 group-hover:text-pink-700 transition duration-200">Login here &rarr;</span>
+        </button>
+      </a>
+      </div>
+    </div>
+  </div>
+  <div class="px-8 py-16">
+    <div class="grid gap-8 items-start justify-center">
+      <div class="relative group">
+        <div class="absolute -inset-0.5 border-4 bg-gradient-to-r from-yellow-300 via-red-300 to-purple-300 border-pink-700 rounded-lg blur opacity-50 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+        <a href="{% url 'chat' %}">
+        <button class="relative px-7 py-4 rounded-lg leading-none flex items-center divide-x divide-gray-600">
+          <span class="flex items-center space-x-5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-pink-600" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
+            </svg>
+            <span class="pr-6 text-gray-900">Join our community</span>
+          </span>
+          <span class="pl-6 text-gray-900 group-hover:text-pink-700 transition duration-200">Login here &rarr;</span>
+        </button>
+      </a>
+      </div>
+    </div>
+  </div>
+  <div class="px-8 py-16">
+    <div class="grid gap-8 items-start justify-center">
+      <div class="relative group">
+        <div class="absolute -inset-0.5 border-4 bg-gradient-to-r from-yellow-300 via-red-300 to-purple-300 border-pink-700 rounded-lg blur opacity-50 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+        <a href="{% url 'support' %}">
+        <button class="relative px-7 py-4 rounded-lg leading-none flex items-center divide-x divide-gray-600">
+          <span class="flex items-center space-x-5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+            <span class="pr-6 text-gray-900">Support the Community </span>
+          </span>
+          <span class="pl-6 text-gray-900 group-hover:text-pink-700 transition duration-200">Donate &rarr;</span>
+        </button>
+      </a>
+      </div>
+    </div>
+  </div>
+  
+  
+
+
+
+  
+  
+  <footer class="text-pink-200 body-font">
+    <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+      <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+        <span class="ml-3 text-xl text-pink-600">PrideUp</span>
+      </a>
+      <p class="text-sm text-pink-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2022 PrideUp —
+        <a href="https://www.thapar.edu/" class="text-pink-600 ml-1" rel="noopener noreferrer" target="_blank">@Thapar.edu</a>
+      </p>
+      <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+        <a class="text-pink-200">
+          <a href="https://www.facebook.com/officialTIET/"><svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+          </svg></a>
+          
+        </a>
+        <a class="ml-3 text-pink-200">
+          <a class="text-pink-200">
+            <a href="https://twitter.com/TIETofficial?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+               <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+          </svg>
+        </a>
+        <a class="ml-3 text-pink-200">
+          <a class="text-pink-200">
+            <a href="https://www.instagram.com/tietofficial/?hl=en"><svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-0" viewBox="0 0 24 24">
+               </svg>
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+            
+            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+          </svg>
+        </a>
+        <a class="ml-3 text-pink-200">
+          <a class="text-pink-200">
+            <a href="https://www.linkedin.com/school/tietofficial/?originalSubdomain=in"><svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-0" viewBox="0 0 24 24">
+               </svg>
+          <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+            <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+            <circle cx="4" cy="4" r="2" stroke="none"></circle>
+          </svg>
+        </a>
+      </span>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('close_button').onclick = function() {
+     document.getElementById('alert_box').style.display = "none";
+    }
+    </script>
+</body>
+</html>

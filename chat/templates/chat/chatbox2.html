@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body style= "background:url(https://media.istockphoto.com/vectors/reaching-hands-vector-id1220744197?k=20&m=1220744197&s=612x612&w=0&h=z5hHdmdSecbd8m3yoe4qgAGTELLQRRhGTMg9lGOHfNQ=); background-repeat:no-repeat; background-attachment:fixed; background-size:100% 100%;"></body>
+    <header class="text-gray-600 body-font">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+          <nav class="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
+            
+          </nav>
+          <a class="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center text-gray-900 lg:items-center lg:justify-center mb-4 md:mb-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yellow-300" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd" />
+              </svg>
+            <span class="ml-3 text-yellow-300 text-3xl">Let's Connect</span>
+          </a>
+          <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
+            
+             
+            </button>
+          </div>
+        </div>
+      </header>
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="container mx-auto">
+      <div class="max-w-10xl border rounded">
+        <div>
+          <div class="w-full">
+            <div class="relative flex items-center p-3 border-b border-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-300" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+                  </svg>
+              <span class="block ml-2 font-bold text-yellow-300">User</span>
+              <span class="absolute w-3 h-3  rounded-full left-10 top-3">
+              </span>
+            </div>
+            <div class="relative w-full p-6 overflow-y-auto h-[40rem]">
+
+              <ul class="space-y-2" id="mychat">
+                {% for message in msgs %}
+                <li class="flex justify-start">
+                  <div class="relative max-w-xl px-4 py-2 text-gray-700 bg-gray-300 rounded shadow">
+                    <span class="user-center">{{message.user.user.username}}</span>
+                    <div class="block font-bold">{{message.message}}</div>
+                    <span class="time-left">{{message.timestamp}}</span>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+
+            </div>
+
+            <div class="flex items-center justify-between w-full p-3 border-t border-gray-300">
+
+              <button>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </button>
+              <button>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                </svg>
+              </button>
+
+              <input type="text" id="msg" placeholder="Message"
+                class="block w-full py-2 pl-4 mx-3 bg-gray-100 rounded-full outline-none focus:text-gray-700"
+                name="message" required />
+              <button>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                </svg>
+              </button>
+              <button id="submit" type="submit">
+                <svg class="w-5 h-5 text-white origin-center transform rotate-90" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20" fill="currentColor">
+                  <path
+                    d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <header class="text-gray-600 body-font">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+          <nav class="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
+            
+          </nav>
+          <a class="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center text-gray-900 lg:items-center lg:justify-center mb-4 md:mb-0">
+            
+            <span class="ml-3 text-xl"></span>
+          </a>
+          <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
+            
+             
+            </button>
+          </div>
+        </div>
+      </header>
+
+
+      <script>
+        var ws = new WebSocket('ws://127.0.0.1:8000/ws/sc/')
+        ws.onopen = function() {
+            console.log('Websocket connection open...')
+        }
+        ws.onmessage = function(event) {
+            console.log('Message received from server...', event)
+            var message = JSON.parse(event.data)
+            console.log(message)
+            
+            var ul = document.getElementById('mychat')
+            var li = document.createElement("li")
+            li.setAttribute("class", "flex justify-start")
+            var div = document.createElement("div")
+            div.setAttribute("class", "relative max-w-xl px-4 py-2 text-gray-700 bg-gray-100 rounded shadow")
+            var span = document.createElement("span")
+            span.setAttribute("class", "user-center")
+            span.appendChild(document.createTextNode(message.user))
+            var span2 = document.createElement("span")
+            span2.setAttribute("class", "block font-bold")
+            span2.appendChild(document.createTextNode(message.msg))
+            var span3 = document.createElement("span")
+            span3.setAttribute("class", "time-left")
+            span3.appendChild(document.createTextNode(message.timestamp))
+            div.appendChild(span)
+            div.appendChild(span2)
+            div.appendChild(span3)
+            li.appendChild(div)
+            ul.appendChild(li)
+        }
+        ws.onclose = function(event) {
+            console.log('Websocket disconnected...', event)
+        }
+
+        document.getElementById('submit').onclick = function() {
+            ws.send(JSON.stringify({
+                'msg': document.getElementById('msg').value
+            }))
+            document.getElementById('msg').value = ""
+        }
+    </script>
+
+
+  </body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body style= "background:url(https://wallpaperaccess.com/full/3643882.jpg); background-repeat:no-repeat; background-attachment:fixed; background-size:100% 100%;">
+    
+
+
+    <div class="flex items-center justify-center min-h-screen ">
+        <div class="px-8 py-6 mt-4 text-left bg-white shadow-lg">
+            {% if messages %}
+            {% for message in messages %}
+            <div id="alert_box" class="w-full bg-red-100 border border-red-400 text-black-700 px-4 py-3 rounded relative" role="alert">
+            <span class="block sm:inline">{{message}}</span>
+            <span id="close_button" class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                <svg class="fill-current h-6 w-6 text-black-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+            </span>
+            </div>
+            {% endfor %}
+            {% endif %}
+            <h3 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-pink-400 via-yellow-400 to-red-600">Login to your account</h3>
+            <form action="{% url 'login' %}" method="POST">
+                {% csrf_token %}
+                <div class="mt-4">
+                    <div>
+                        <label class="block" for="User_Name">Username<label>
+                                <input name="username" type="text" placeholder="Username"
+                                    class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
+                    </div>
+                    <div class="mt-4">
+                        <label class="block">Password<label>
+                                <input name="password" type="password" placeholder="Password"
+                                    class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
+                    </div>
+                    {% if next_url %}
+                    <input type="hidden" value="{{next_url}}" name='next'>
+                    {% endif %}
+                    <div class="flex items-baseline justify-between">
+                        <button type="submit" class="px-6 py-2 mt-4 text-white bg-gradient-to-r from-yellow-300 via-red-300 to-purple-300 rounded-lg blur opacity-100 group-hover:opacity-50 transition duration-1000 group-hover:duration-200 animate-tilt ">Login</button>
+                      
+                    </div>
+                    <div class="mt-6 text-grey-dark">
+                        Don't have an account?
+                        <a class="text-blue-600 hover:underline" href="{% url 'login' %}">
+                            Create one
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.getElementById('close_button').onclick = function() {
+         document.getElementById('alert_box').style.display = "none";
+        }
+        </script>
+</body>
+</html>
