@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'shop/css/home.css' %}">
+
+
+    <title>Seller Dashboard</title>
+</head>
+<body >
+  <nav class="navbar">
+    <div class="nav">
+        <img src="{% static 'shop/images/logo.png' %}" class="brand-logo" alt="">
+        <div class="nav-items">
+            <form method="POST" action="/search/">
+            <div class="search">
+                    {% csrf_token %}
+                <input type="text" name="query" class="search-box" placeholder="search brand, product">
+                <button type="submit" class="search-btn">search</button>
+            </div>
+        </form>
+            {% if request.user.is_anonymous %}
+            <a href="/login"><img src="{% static 'shop/images/user.png' %}" alt=""></a>
+            {% else %}
+            <a href="/logout"><img src="{% static 'shop/images/user.png' %}" alt=""></a>
+            {% endif %}
+            <a href="{% url 'cart' %}"><img src="{% static 'shop/images/cart.png' %}" alt=""></a>
+        </div>
+            </div>
+        <ul class="links-container">
+        <li class="link-item"><a href="{% url 'homepage' %}" class="link">Home</a></li>
+        <li class="link-item"><a href="#" class="link">Ally</a></li>
+        <li class="link-item"><a href="#" class="link">Merch</a></li>
+        <li class="link-item"><a href="#" class="link">Homemade</a></li>
+        {% if user.is_authenticated %}
+        <li class="link-item"><a href="{% url 'seller-dashboard' %}" class="link">Dashboard</a></li>
+        <li class="link-item"><a href="{% url 'chat' %}" class="link">Public Chat</a></li>
+        {% endif %}
+    
+        </ul>
+  </nav>
+    
+  <section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-col text-center w-full mb-20">
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Your Account</h1>
+        
+      </div>
+      <div class="flex flex-wrap -m-2">
+        <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+          <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+            <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/80x80">
+            <a href="{% url 'seller-pending-orders' %}">
+            <div class="flex-grow">
+              <h2 class="text-gray-900 title-font font-medium">Track orders</h2>
+              
+            </div>
+        </a>
+          </div>
+        </div>
+        <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+          <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+            <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/84x84">
+            <a href="{% url 'seller-previous-orders' %}">
+            <div class="flex-grow">
+              <h2 class="text-gray-900 title-font font-medium">Previously ordered</h2>
+              
+            </div>
+        </a>
+          </div>
+        </div>
+        <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+          <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+            <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/88x88">
+            <div class="flex-grow">
+              <h2 class="text-gray-900 title-font font-medium">Settings</h2>
+              
+            </div>
+          </div>
+        </div>
+        <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+          <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+            <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/90x90">
+            <div class="flex-grow">
+              <h2 class="text-gray-900 title-font font-medium">Change password</h2>
+              
+            </div>
+          </div>
+        </div>
+        <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+          <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+            <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/94x94">
+            <div class="flex-grow">
+              <h2 class="text-gray-900 title-font font-medium">Cancel order</h2>
+              
+            </div>
+          </div>
+        </div>
+        <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+          <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+            <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/98x98">
+            <a href="{% url 'seller-previous-orders' %}">
+            <div class="flex-grow">
+              <h2 class="text-gray-900 title-font font-medium">your cart</h2>
+            
+            </div>
+        </a>
+          </div>
+        </div>
+        <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+          <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+            <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/100x90">
+            <a href="{% url 'support' %}">
+            <div class="flex-grow">
+              <h2 class="text-gray-900 title-font font-medium">Donate</h2>
+             
+            </div>
+        </a>
+          </div>
+        </div>
+        <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+          <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+            <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/104x94">
+            <a href="{% url 'chat' %}">
+            <div class="flex-grow">
+              <h2 class="text-gray-900 title-font font-medium">Join community</h2>
+              
+            </div>
+        </a>
+          </div>
+        </div>
+        <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+          <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+            <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/108x98">
+            <a href="{% url 'logout' %}">
+            <div class="flex-grow">
+              <h2 class="text-gray-900 title-font font-medium">Logout</h2>
+              
+            </div>
+        </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="footer-content">
+        <img src="{% static 'shop/images/logo.png' %}" class="logo" alt="">
+        <div class="footer-ul-container">
+            <ul class="category">
+                <li class="category-title">Items</li>
+                <li><a href="#" class="footer-link">Homemade Items</a></li>
+                <li><a href="#" class="footer-link">Food</a></li>
+                <li><a href="#" class="footer-link">T-shirts</a></li>
+                <li><a href="#" class="footer-link">jeans</a></li>
+                <li><a href="#" class="footer-link">trousers</a></li>
+                <li><a href="#" class="footer-link">shoes</a></li>
+                
+            </ul>
+            <ul class="category">
+                <li class="category-title">Info</li>
+                <li><a href="{% url 'contact' %}" class="footer-link">Contact us</a></li>
+                <li><a href="#" class="footer-link">FAQs</a></li>
+                <li><a href="#" class="footer-link">Our team</a></li>
+                <li><a href="{% url 'events' %}" class="footer-link">Events</a></li>
+                <li><a href="{% url 'support' %}" class="footer-link">Donate us</a></li>
+                
+            </ul>
+        </div>
+    </div>
+  </footer>
+</body>
+</html>

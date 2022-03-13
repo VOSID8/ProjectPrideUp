@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PrideKart- Be You</title>
+<link rel="stylesheet" href="{% static 'shop/css/home.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav">
+            <img src="{% static 'shop/images/logo.png' %}" class="brand-logo" alt="">
+            <div class="nav-items">
+                <form method="POST" action="/search/">
+                <div class="search">
+                        {% csrf_token %}
+                    <input type="text" name="query" class="search-box" placeholder="search brand, product">
+                    <button type="submit" class="search-btn">search</button>
+                </div>
+            </form>
+                {% if request.user.is_anonymous %}
+                <a href="/login"><img src="{% static 'shop/images/user.png' %}" alt=""></a>
+                {% else %}
+                <a href="/logout"><img src="{% static 'shop/images/user.png' %}" alt=""></a>
+                {% endif %}
+                <a href="{% url 'cart' %}"><img src="{% static 'shop/images/cart.png' %}" alt=""></a>
+            </div>
+                </div>
+            <ul class="links-container">
+            <li class="link-item"><a href="{% url 'homepage' %}" class="link">Home</a></li>
+            <li class="link-item"><a href="#" class="link">Ally</a></li>
+            <li class="link-item"><a href="#" class="link">Merch</a></li>
+            <li class="link-item"><a href="#" class="link">Homemade</a></li>
+            {% if user.is_authenticated %}
+        <li class="link-item"><a href="{% url 'seller-dashboard' %}" class="link">Dashboard</a></li>
+        <li class="link-item"><a href="{% url 'chat' %}" class="link">Public Chat</a></li>
+        {% endif %}
+        
+            </ul>
+    </nav>
+    <header class="hero-section">
+        <div class="content">
+            <img src="{% static 'shop/images/logo.png' %}" class="logo" alt="">
+            <p class="sub-heading">Time to start letting people be themselves</p>
+        </div>
+    </header>
+    <section class="product">
+        <h2 class="product-category">best selling</h2>
+        <button class="pre-btn"><img src="{% static 'shop/images/arrow.png' %}" alt=""></button>
+<button class="nxt-btn"><img src="{% static 'shop/images/arrow.png' %}" alt=""></button>
+
+<div class="product-container">        
+{% for product in products %}
+            <div class="product-card">
+                <a href="product/{{product.slug}}">
+                <div class="product-image">
+                    
+                    <img src="{{product.image1.url}}" class="product-thumb" alt="">
+                    <form method="POST" action="/cart/">
+                        {% csrf_token %}
+                        <input type="hidden" name="id" value="{{product.id}}"> 
+                    <button class="card-btn">add to cart</button>
+                </form>
+                </div>
+                <div class="product-info">
+                   
+                    <p class="product-short-des">{{product.name}}</p>
+                    <span class="price">₹{{product.price}}</span>
+                </div>
+            </a>
+            </div>
+         {% endfor %} 
+            <div class="product-card">
+                <div class="product-image">
+                    
+                    <img src="https://cdn.shopify.com/s/files/1/0107/9820/2938/products/rainbowwhite_800x.png?v=1646346956" class="product-thumb" alt="">
+                    <button class="card-btn">add to cart</button>
+                </div>
+                <div class="product-info">
+                    
+                    <p class="product-short-des">shoes</p>
+                    <span class="price">₹700</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    
+                    <img src="https://m.media-amazon.com/images/I/61TjpKAnyvL._AC_UL320_.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to cart</button>
+                </div>
+                <div class="product-info">
+                    
+                    <p class="product-short-des">T-shirt</p>
+                    <span class="price">₹600</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    
+                    <img src="data:image/jpeg;base64,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" class="product-thumb" alt="">
+                    <button class="card-btn">add to cart</button>
+                </div>
+                <div class="product-info">
+                    
+                    <p class="product-short-des">Pride pin</p>
+                    <span class="price">₹100</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    
+                    <img src="https://static.onecms.io/wp-content/uploads/sites/38/2018/07/12213304/shutterstock_1041548824.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to cart</button>
+                </div>
+                <div class="product-info">
+                    
+                    <p class="product-short-des">Toy</p>
+                    <span class="price">₹200</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    
+                    <img src="https://5.imimg.com/data5/SX/PY/MY-15079595/hospital-towel-500x500.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to cart</button>
+                </div>
+                <div class="product-info">
+                    
+                    <p class="product-short-des">Towel</p>
+                    <span class="price">₹300</span>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    <section class="collection-container">
+        <a href="#" class="collection">
+            <img src="https://image.made-in-china.com/202f0j00GZiTgbyslFoS/Handmade-Cloth-Small-Leisure-Rabbit-Toys.jpg" alt="">
+            <p class="collection-title">Handmade </p>
+        </a>
+        <a href="#" class="collection">
+            <img src="{% static 'shop/images/men-collection.png' %}" alt="">
+            <p class="collection-title">Clothes </p>
+        </a>
+        <a href="#" class="collection">
+            <img src="https://www.bakingo.com/blog/wp-content/uploads/2020/11/rainbow-cake.jpg" alt="">
+            <p class="collection-title">Other </p>
+        </a>
+    </section>
+    <footer>
+        <div class="footer-content">
+            <img src="{% static 'shop/images/logo.png' %}" class="logo" alt="">
+            <div class="footer-ul-container">
+                <ul class="category">
+                    <li class="category-title">Items</li>
+                    <li><a href="#" class="footer-link">Homemade Items</a></li>
+                    <li><a href="#" class="footer-link">Food</a></li>
+                    <li><a href="#" class="footer-link">T-shirts</a></li>
+                    <li><a href="#" class="footer-link">jeans</a></li>
+                    <li><a href="#" class="footer-link">trousers</a></li>
+                    <li><a href="#" class="footer-link">shoes</a></li>
+                    
+                </ul>
+                <ul class="category">
+                    <li class="category-title">Info</li>
+                    <li><a href="{% url 'contact' %}" class="footer-link">Contact us</a></li>
+                    <li><a href="#" class="footer-link">FAQs</a></li>
+                    <li><a href="#" class="footer-link">Our team</a></li>
+                    <li><a href="{% url 'events' %}" class="footer-link">Events</a></li>
+                    <li><a href="{% url 'support' %}" class="footer-link">Donate us</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </footer>
+        <script src="{% static 'shop/js/home.js' %}"></script>
+</body>
+</html>

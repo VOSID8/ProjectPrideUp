@@ -28,7 +28,10 @@ class Product(models.Model):
     desc = models.TextField()
     quantity = models.PositiveIntegerField()
     discount = models.IntegerField()
-    image = models.ImageField(upload_to='shop/static/shop/images/products')
+    image1 = models.ImageField(upload_to='shop/static/shop/images/products', null=True)
+    image2 = models.ImageField(upload_to='shop/static/shop/images/products', null=True)
+    image3 = models.ImageField(upload_to='shop/static/shop/images/products', null=True)
+    image4 = models.ImageField(upload_to='shop/static/shop/images/products', null=True)
 
     def __str__(self):
         return self.name

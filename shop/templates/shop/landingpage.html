@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html >
+  {% load static %}
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Landing page</title>
+    <link rel="stylesheet" href="{% static 'shop/css/styles.css' %}">
+   
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts. googleapis.com/css2?
+family=Poppins:wght@100; 200;300;400;600;700&display=swap"
+rel="stylesheet">
+<link rel="stylesheet"
+href="https://stackpath.bootstrapcdn.com/font-
+awesome/4.7.0/css/font-awesome.min.css"> 
+</head>
+<body>
+    <section class="header">
+        <nav>
+            <a href="index.html"><img src="{% static 'shop/images/logofinal.png' %}"></a>
+            <div class="nav-links" id="navLinks">
+            <i class="fa fa-times" onclick="hideMenu()"></i>
+            <ul>
+            <li><a href="{% url 'about' %}">ABOUT US</a></li>
+            <li><a href="{% url 'contact' %}">CONTACT US</a></li>
+            
+            <li><a href="{% url 'support' %}">DONATE</a></li>
+            
+            </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+            </nav>
+
+
+            <div
+       class="text-box">
+<h1>Pride Up</hl>
+<p>We hope to see world through rainbow coloured glasses.<br>Now it's time to let people be themselves.
+</p>
+<a href="{% url 'shop_homepage' %}" class="hero-btn">Visit Us To know More</a>
+</div>
+
+
+    </section>
+
+
+<!----course-->
+
+    <section class="course">
+        <h1>ONE LOVE, ONE TEAM, ONE COMMUNITY</h1>
+        <p></p>
+    
+    <div class="row">
+      <a href="{% url 'shop_homepage' %}">
+    <div class="course-col">
+        <h3>Pride Cart</h3>
+    <p>Shop our exclusive items!</p>
+
+    </div>
+  </a>
+    
+
+<a href="{% url 'blog' %}">
+<div class="course-col">
+<h3>Blog Site</h3>
+<p>Explore the victories!</p>
+
+</div>
+</a>
+<a href="{% url 'about' %}">
+<div class="course-col">
+<h3>Support</h3>
+<p>Do your little part!</p>
+</div>
+</a>
+
+    </div>
+
+
+
+
+
+
+
+
+        </section>
+<!----campus-->
+        <section class="campus">
+
+            
+<h1>Events</h1>
+<p></p>
+
+
+<div class="row">
+    <div class="campus-col">
+    <img src="{% static 'shop/images/4.jpg' %} ">
+    <div class="layer">
+<h3>JULY 2,1999</h3>
+    </div>
+    </div>
+
+    <div class="campus-col">
+        <img src="{% static 'shop/images/6.jpg' %}">
+        <div class="layer">
+    <h3>Queer Pride 2018 </h3>
+        </div>
+        </div>
+
+        <div class="campus-col">
+            <img src="{% static 'shop/images/7.jpg' %}">
+            <div class="layer">
+        <h3>Delhi Queer Pride 2019 </h3>
+            </div>
+            </div>
+
+    </div>
+
+
+        </section>
+        <!--facilities-->
+
+
+       
+
+        <!----testimonials-->
+
+<section class="testimonials">
+    <h1>What Our Buyers Say</h1>
+<p></p>
+
+<div class="row">
+    <div class="testimonial-col">
+    <img src="{% static 'shop/images/p.png' %}">
+    <div>
+    <p>Delighted to be part of such a wholesome community</p>
+
+    <h3>Navya Sangal</h3>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    </div>
+    
+    </div>
+
+
+
+
+    <div class="testimonial-col">
+        <img src="{% static 'shop/images/p.png' %}">
+        <div>
+        <p>Really love the quality of the products</p>
+    
+        <h3>Gaurangi Goenka</h3>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star-half-o"></i>
+
+
+        </div>
+        
+        </div>
+    </div>
+
+</section>
+      
+
+<!----javascript for toggle menu----->
+    <script>
+      
+      
+        var navLinks = document.getElementById ("navLinks");
+        function showMenu () {
+navLinks.style.right = "0";}
+function hideMenu () {
+navLinks.style.right = "-200px";
+}
+        
+        </script>-->
+
+
+
+
+
+<footer class="text-pink-200 body-font">
+    <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+      <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+        <span class="ml-3 text-xl text-pink-600">PrideUp</span>
+      </a>
+      <p class="text-sm text-pink-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2022 PrideUp —
+        <a href="https://www.thapar.edu/" class="text-pink-600 ml-1" rel="noopener noreferrer" target="_blank">@Thapar.edu</a>
+      </p>
+      <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+        <a class="text-pink-200">
+          <a href="https://www.facebook.com/officialTIET/"><svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+          </svg></a>
+          
+        </a>
+        <a class="ml-3 text-pink-200">
+          <a class="text-pink-200">
+            <a href="https://twitter.com/TIETofficial?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+               <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+          </svg>
+        </a>
+        <a class="ml-3 text-pink-200">
+          <a class="text-pink-200">
+            <a href="https://www.instagram.com/tietofficial/?hl=en"><svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-0" viewBox="0 0 24 24">
+               </svg>
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+            
+            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+          </svg>
+        </a>
+        <a class="ml-3 text-pink-200">
+          <a class="text-pink-200">
+            <a href="https://www.linkedin.com/school/tietofficial/?originalSubdomain=in"><svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-0" viewBox="0 0 24 24">
+               </svg>
+          <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+            <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+            <circle cx="4" cy="4" r="2" stroke="none"></circle>
+          </svg>
+        </a>
+      </span>
+    </div>
+  </footer>
+</body>
+</html>

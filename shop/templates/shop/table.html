@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Hostel Authority Dashboard</title>
+    
+</head>
+
+<body style= "background:url(https://wallpaperaccess.com/full/809177.jpg); background-repeat:no-repeat; background-attachment:fixed; background-size:100% 100%;">
+
+    <div class="flex items-center justify-center ">
+    
+        <div class="text-black font-bold">
+            <p style="text-align:center; font-size:30px;">{{status}} ORDERS</p>
+            <table class="  table-auto mt-8 mb-40 bg-pink-400">
+                <tr>
+                  <th class="bg-pink-200 text-black border text-center px-16 py-4">S.No</th>
+                  <th class="bg-pink-200 text-black border text-center px-16 py-4">Product</th>
+                  <th class="bg-pink-200 text-black border text-center px-16 py-4">Quantity</th>
+                  <th class="bg-pink-200 text-black border text-center px-16 py-4">Price</th>
+                  <th class="bg-pink-200 text-black border text-center px-16 py-4">Total cost</th>
+                </tr>
+                {% for order in orders %}
+                <tr>
+                  <td>{{forloop.counter}}</td>
+                  <td>{{order.product.name}}</td>
+                  <td>{{order.quantity}}</td>
+                  <td>{{order.product.price}}</td>
+                  <td>{{order.price}}</td>
+                </tr>
+                {% endfor %}
+              </table>
+
+              
+                
+                      
+             
+                
+                  
+              
+            
+            </div>
+        </div>
+        
+      </div>
+
+</body>
+</html>

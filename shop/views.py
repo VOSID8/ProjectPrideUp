@@ -3,11 +3,13 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .models import CartItem, Customer, Product, Contact, Order
+from django.core.exceptions import PermissionDenied
+from django.http import Http404
+from .models import CartItem, Customer, Product, Contact, Order, Seller
 
 # Create your views here.
 def index(request):
-    return render(request, 'shop/index.html')
+    return render(request, 'shop/landingpage.html')
 
 def menu(request):
     return render(request, 'shop/main.html')
@@ -17,14 +19,14 @@ def shop(request):
     context = {
         'products': products
     }
-    return render(request, 'shop/e_commerce.html', context=context)
+    return render(request, 'shop/index_next.html', context=context)
 
 def product(request, slug=None):
     if slug is not None:
         try:
             product = Product.objects.get(slug=slug)
         except Product.DoesNotExist:
-            messages.add_message(request, "Product Doesn't exist")
+            messages.error(request, "Product Doesn't exist")
             return redirect('/shop')
         context = {
             'product': product
@@ -135,10 +137,6 @@ def removeCartItem(request):
         item.delete()
     return redirect('/cart')
 
-@login_required(login_url="/login")
-def order(request):
-    return render(request, 'shop/order_sum.html')
-
 def about(request):
     return render(request, 'shop/about_us.html')
 
@@ -181,3 +179,96 @@ def checkout(request):
     }
     return render(request, 'shop/checkout.html', context=context)
 
+
+#seller pending orders
+@login_required(login_url='/login')
+def sellerPendingOrders(request):
+    seller = Seller.objects.filter(user=request.user)
+    if seller.exists():
+        seller = seller[0]
+    else:
+        raise PermissionDenied
+    orders = Order.objects.filter(product__seller=seller).exclude(status='delivered')
+    return render(request, 'shop/table.html', {
+        'orders': orders,
+        'status': 'PENDING'
+    })
+
+#seller previous orders
+@login_required(login_url='/login')
+def sellerPreviousOrders(request):
+    seller = Seller.objects.filter(user=request.user)
+    if seller.exists():
+        seller = seller[0]
+    else:
+        raise PermissionDenied
+    orders = Order.objects.filter(product__seller=seller, status='delivered')
+    return render(request, 'shop/table.html', {
+        'orders': orders,
+        'status': 'PREVIOUS'
+    })
+
+
+
+#edit the product information
+@login_required(login_url='/login')
+def editProduct(request, slug):
+    seller = Seller.objects.filter(user=request.user)
+    if not seller.exists():
+        raise PermissionDenied
+    product = None
+    if slug!='-':
+        product = Product.objects.filter(slug=slug)
+        if product.exists():
+            product = product[0]
+            if product.seller.user!=request.user:
+                raise PermissionDenied
+        else:
+            raise Http404
+    if request.method=='POST':
+        name = request.POST['name']
+        entry_slug = request.POST['entry_slug']
+        price = request.POST['price']
+        desc = request.POST['desc']
+        quantity = request.POST['quantity']
+        image1 = request.FILES['image1']
+        image2 = request.FILES['image2']
+        image3 = request.FILES['image3']
+        image4 = request.FILES['image4']
+        if slug=='-':
+            product = Product(name=name, slug=entry_slug, seller=seller[0], price=price, desc=desc, quantity=quantity, discount=0, image1=image1, image2=image2, image3=image3, image4=image4)
+            product.save()
+        else:
+            product = Product.objects.filter(slug=slug)
+            if product.exists():
+                product = product[0]
+            else:
+                raise Http404
+            product.name = name
+            product.slug = entry_slug
+            product.price = price
+            product.desc = desc
+            product.quantity = quantity
+            product.image1 = image1
+            product.image2 = image2
+            product.image3 = image3
+            product.image4 = image4
+            product.save()
+            return redirect('/seller-dashboard')
+    return render(request, 'shop/seller.html', {
+        'product': product,
+        'prevslug': slug
+    })
+
+def search(request):
+    if request.method=='GET':
+        return redirect('/')
+    query = request.POST['query']
+    products = Product.objects.filter(name__contains=query)
+    return render(request, 'search.html', {
+        'products': products,
+        'query': query
+    })
+
+def dashboard(request):
+    return render(request, 'shop/account.html')

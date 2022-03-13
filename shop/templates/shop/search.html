@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width-Ddevice-width, initial-scale=1.0">
+    <title>Search Results   </title>
+
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/search.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav">
+            <img src="{% static 'shop/images/logo.png' %}" class="brand-logo" alt="">
+            <div class="nav-items">
+                <form method="POST" action="/search/">
+                    <div class="search">
+                            {% csrf_token %}
+                        <input type="text" name="query" class="search-box" placeholder="search brand, product">
+                        <button type="submit" class="search-btn">search</button>
+                    </div>
+                </form>
+                {% if request.user.is_anonymous %}
+                <a href="/login"><img src="{% static 'shop/images/user.png' %}" alt=""></a>
+                {% else %}
+                <a href="/logout"><img src="{% static 'shop/images/user.png' %}" alt=""></a>
+                {% endif %}
+                <a href="{% url 'cart' %}"><img src="{% static 'shop/images/cart.png' %}" alt=""></a>
+            </div>
+                </div>
+            <ul class="links-container">
+            <li class="link-item"><a href="{% url 'homepage' %}" class="link">Home</a></li>
+            <li class="link-item"><a href="#" class="link">Ally</a></li>
+            <li class="link-item"><a href="#" class="link">Merch</a></li>
+            <li class="link-item"><a href="#" class="link">Homemade</a></li>
+        
+            </ul>
+    </nav>
+
+
+    <section class="search-results">
+        <h2 class="heading">search results for <span>{{query}}</span></h2>
+        </section>
+        <section class="product">
+            <h2 class="product-category">Best matched</h2>
+            <button class="pre-btn"><img src="img/arrow.png" alt=""></button>
+    <button class="nxt-btn"><img src="img/arrow.png" alt=""></button>
+            <div class="product-container">
+
+                {% for product in products %}
+                <div class="product-card">
+                    <div class="product-image">
+                        
+                        <img src="{{product.image1.url}}" class="product-thumb" alt="">
+                        <form method="POST" action="/cart/">
+                            {% csrf_token %}
+                            <input type="hidden" name="id" value="{{product.id}}"> 
+                        <button class="card-btn">add to cart</button>
+                        </form>
+                    </div>
+                    <div class="product-info">
+                        
+                        <p class="product-short-des">{{product.name}}</p>
+                        <span class="price">₹{{product.price}}</span>
+                    </div>
+                </div>
+                {% endfor %}
+                
+            </div>
+        </section>
+
+    <footer>
+        <div class="footer-content">
+            <img src="{% static 'shop/images/logo.png' %}" class="logo" alt="">
+            <div class="footer-ul-container">
+                <ul class="category">
+                    <li class="category-title">Items</li>
+                    <li><a href="#" class="footer-link">Homemade Items</a></li>
+                    <li><a href="#" class="footer-link">Food</a></li>
+                    <li><a href="#" class="footer-link">T-shirts</a></li>
+                    <li><a href="#" class="footer-link">jeans</a></li>
+                    <li><a href="#" class="footer-link">trousers</a></li>
+                    <li><a href="#" class="footer-link">shoes</a></li> 
+                </ul>
+                <ul class="category">
+                    <li class="category-title">Info</li>
+                    <li><a href="{% url 'contact' %}" class="footer-link">Contact us</a></li>
+                    <li><a href="#" class="footer-link">FAQs</a></li>
+                    <li><a href="#" class="footer-link">Our team</a></li>
+                    <li><a href="{% url 'events' %}" class="footer-link">Events</a></li>
+                    <li><a href="{% url 'support' %}" class="footer-link">Donate us</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    </footer>
+    
+    <script src="javascript/nav.js"></script>
+    <script src="javascript/footer.js"></script>
+</body>
+</html>

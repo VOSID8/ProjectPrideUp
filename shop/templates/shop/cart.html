@@ -1,14 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+  {% load static %}  
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'shop/css/home.css' %}">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <title>main page</title>
-    
 </head>
+<nav class="navbar">
+  <div class="nav">
+      <img src="{% static 'shop/images/logo.png' %}" class="brand-logo" alt="">
+      <div class="nav-items">
+        <form method="POST" action="/search/">
+          <div class="search">
+                  {% csrf_token %}
+              <input type="text" name="query" class="search-box" placeholder="search brand, product">
+              <button type="submit" class="search-btn">search</button>
+          </div>
+      </form>
+          {% if request.user.is_anonymous %}
+          <a href="/login"><img src="{% static 'shop/images/user.png' %}" alt=""></a>
+          {% else %}
+          <a href="/logout"><img src="{% static 'shop/images/user.png' %}" alt=""></a>
+          {% endif %}
+          <a href="{% url 'cart' %}"><img src="{% static 'shop/images/cart.png' %}" alt=""></a>
+      </div>
+          </div>
+      <ul class="links-container">
+      <li class="link-item"><a href="{% url 'homepage' %}" class="link">Home</a></li>
+      <li class="link-item"><a href="#" class="link">Ally</a></li>
+      <li class="link-item"><a href="#" class="link">Merch</a></li>
+      <li class="link-item"><a href="#" class="link">Homemade</a></li>
+      {% if user.is_authenticated %}
+        <li class="link-item"><a href="{% url 'seller-dashboard' %}" class="link">Dashboard</a></li>
+        <li class="link-item"><a href="{% url 'chat' %}" class="link">Public Chat</a></li>
+        {% endif %}
   
+      </ul>
+</nav>
   <body class="bg-gray-100">
     <div class="container mx-auto mt-10">
       <div class="flex shadow-md my-10">
@@ -27,7 +58,7 @@
           <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
             <div class="flex w-2/5"> 
               <div class="w-20">
-                <img class="h-24" src="{{item.product.image.url}}" alt="">
+                <img class="h-24" src="{{item.product.image1.url}}" alt="">
               </div>
               <div class="flex flex-col justify-between ml-4 flex-grow">
                 <span class="font-bold text-sm">{{item.product.name}}</span>

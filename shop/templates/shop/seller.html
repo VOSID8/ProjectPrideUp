@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{% static 'shop/css/signup.css' %}">
+<link rel="stylesheet" href="{% static 'shop/css/addproduct.css' %}">
+<title>List new product</title>
+</head>
+ <body>
+        <img src="{% static 'shop/images/logo.png' %}" class="logo" alt="">
+
+<div class="form">
+    <form action='/edit/product/{{prevslug}}/' method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label style="width: 100%;">Product Name
+    
+            <input name="name" type="text" id="product-name" placeholder="product name">
+        </label>
+        <label style="width: 100%;">Product Description
+            <input name="desc" type="text" id="short-des" placeholder="short line about the product">
+        </label>
+        <label style="width: 100%;">Slug
+            <input name="entry_slug" type="text" id="short-des" placeholder="short line about the product">
+        </label>
+
+    <!-- product image -->
+    <div class="product-info">
+        <div class="product-image"><p class="text">product image</p></div>
+        <div class="upload-image-sec">
+            <!-- upload inputs -->
+            <p class="text"><img src="{% static 'shop/images/camera.jpg' %}" alt="">upload image</p>
+            <div class="upload-catalouge">
+                <label for="first-file-upload-btn" class="upload-image">First Image</label>
+                <input name="image1" type="file" class="fileupload" id="first-file-upload-btn" >
+                
+                <label for="second-file-upload-btn" class="upload-image">Second Image</label>
+                <input name="image2" type="file" class="fileupload" id="second-file-upload-btn">
+            
+                <label for="third-file-upload-btn" class="upload-image">Third Image</label>
+                <input name="image3" type="file" class="fileupload" id="third-file-upload-btn" >
+                
+                <label for="fourth-file-upload-btn" class="upload-image">Fourth Image</label>
+                <input name="image4" type="file" class="fileupload" id="fourth-file-upload-btn" >
+                
+            </div>
+        </div>
+        <!-- <div class="select-sizes">
+            <p class="text">size available</p>
+            <div class="sizes">
+                <input type="checkbox" class="size-checkbox" id="xs" value="xs">
+                <input type="checkbox" class="size-checkbox" id="s" value="s">
+                <input type="checkbox" class="size-checkbox" id="m" value="m">
+                <input type="checkbox" class="size-checkbox" id="l" value="l">
+                <input type="checkbox" class="size-checkbox" id="xl" value="xl">
+                <input type="checkbox" class="size-checkbox" id="xxl" value="xxl">
+                <input type="checkbox" class="size-checkbox" id="xxxl" value="xxxl">
+            </div>
+        </div> -->
+    </div>
+
+    <div class="product-price">
+        <label for="actual-price">Price
+        <input name="price" type="number" id="actual-price" placeholder="actual price">
+        </label>
+        <!-- <input type="number" id="discount" placeholder="discount percentage">
+        <input type="number" id="sell-price" placeholder="selling price"> -->
+    </div>
+    <label for="stock">Stock Available
+    <input name="quantity" type="number" id="stock"  placeholder="item in stock ">
+    </label>
+
+    <!-- <textarea id="tags" placeholder="Enter categories here, for example - Men, Jeans, Blue Jeans, Rough jeans (you sholud add men or women at start)"></textarea> -->
+
+   
+
+    <div class="buttons">
+        <button class="btn" type="submit" id="add-btn">add product</button>
+        <!-- <button class="btn" id="save-btn">save draft</button> -->
+    </div>
+    </form>
+    </div>
+</body>
+
+</html>
