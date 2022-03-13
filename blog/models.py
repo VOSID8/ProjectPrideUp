@@ -10,9 +10,10 @@ class Post(models.Model):
     author = models.ForeignKey(Seller, on_delete=models.CASCADE)
     text = models.TextField()
     date = models.DateField(auto_now=True, blank=True)
-    views = models.PositiveIntegerField()
+    views = models.PositiveIntegerField(default=0, blank=True)
     slug = models.CharField(max_length=70)
-    likes = models.ManyToManyField(User)
+    likes = models.ManyToManyField(User, blank=True)
+    image = models.ImageField(upload_to='static/blog/images/upload', null=True)
 
 class Comment(models.Model):
     content = models.CharField(max_length=200)

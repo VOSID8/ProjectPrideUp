@@ -11,15 +11,13 @@ from .models import CartItem, Customer, Product, Contact, Order, Seller
 def index(request):
     return render(request, 'shop/landingpage.html')
 
-def menu(request):
-    return render(request, 'shop/main.html')
 
 def shop(request):
     products = Product.objects.all()
     context = {
         'products': products
     }
-    return render(request, 'shop/index_next.html', context=context)
+    return render(request, 'shop/index_new.html', context=context)
 
 def product(request, slug=None):
     if slug is not None:
@@ -55,7 +53,7 @@ def logout_view(request):
     if request.user.is_authenticated:
         logout(request)
         messages.success(request, "Logged out successfully")
-    return redirect('/menu')
+    return redirect('/')
 
 def signup(request):
     if request.method=='POST':
@@ -138,10 +136,10 @@ def removeCartItem(request):
     return redirect('/cart')
 
 def about(request):
-    return render(request, 'shop/about_us.html')
+    return render(request, 'shop/aboutus.html')
 
 def support(request):
-    return render(request, 'shop/support.html')
+    return render(request, 'shop/supportfinal.html')
 
 def contact(request):
     if request.method=='POST':
@@ -151,7 +149,7 @@ def contact(request):
         entry = Contact(name=name, email=email, query=query)
         entry.save()
         messages.success(request, "Thankyou for contacting us.")
-        return redirect('/menu')
+        return redirect('/')
     return render(request, 'shop/contact_us.html')
 
 def checkout(request):
@@ -163,7 +161,7 @@ def checkout(request):
             order.save()
             item.delete()
         messages.success(request, 'Order placed successfully')
-        return redirect('/menu')
+        return redirect('/')
     count = len(cart_items)
     amount = 0.0
     shipping_charges = 50.0
