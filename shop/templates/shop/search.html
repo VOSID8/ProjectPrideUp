@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width-Ddevice-width, initial-scale=1.0">
     <title>Search Results   </title>
 
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="{% static 'shop/css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'shop/css/search.css' %}">
 </head>
 <body>
     <nav class="navbar">
@@ -43,13 +44,13 @@
         <h2 class="heading">search results for <span>{{query}}</span></h2>
         </section>
         <section class="product">
-            <h2 class="product-category">Best matched</h2>
             <button class="pre-btn"><img src="img/arrow.png" alt=""></button>
     <button class="nxt-btn"><img src="img/arrow.png" alt=""></button>
             <div class="product-container">
 
                 {% for product in products %}
                 <div class="product-card">
+                    <a href="/product/{{product.slug}}">
                     <div class="product-image">
                         
                         <img src="{{product.image1.url}}" class="product-thumb" alt="">
@@ -64,6 +65,7 @@
                         <p class="product-short-des">{{product.name}}</p>
                         <span class="price">₹{{product.price}}</span>
                     </div>
+                </a>
                 </div>
                 {% endfor %}
                 

@@ -263,7 +263,7 @@ def search(request):
         return redirect('/')
     query = request.POST['query']
     products = Product.objects.filter(name__contains=query)
-    return render(request, 'search.html', {
+    return render(request, 'shop/search.html', {
         'products': products,
         'query': query
     })
