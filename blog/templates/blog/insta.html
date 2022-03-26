@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-
+{% load static %}
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -10,46 +10,46 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" re>
-<link rel="stylesheet" href="css/instastyle.css">
+<link rel="stylesheet" href="{% static 'blog/css/instastyle.css'%}">
 </head>
 <body>
 
 <!-- navbar -->
 <nav class="navbar">
-    <img src="img/logo2.png" class="logo" alt="">
+    <img src="{% static 'blog/img/logo2.png' %}" class="logo" alt="">
     <form class="search-box">
         <input type="text" placeholder="search" name="search-query" id="search-input">
-        <button class="search-btn" type="submit"><img src="img/search.png" class="search-icon" alt=""></button>
+        <button class="search-btn" type="submit"><img src="{% static 'blog/img/search.png' %}" class="search-icon" alt=""></button>
     </form>
     <div class="nav-links">
-        <a href="#" class="nav-links"><img src="img/home-fill.png" class="nav-icon" alt=""></a>
+        <a href="#" class="nav-links"><img src="{% static 'blog/img/home-fill.png' %}" class="nav-icon" alt=""></a>
         <div class="activity-log">
-            <img src="img/heart-nofill.png" class="nav-icon" alt="">
+            <img src="{% static 'blog/img/heart-nofill.png' %}" class="nav-icon" alt="">
             <div class="activity-container hide">
                 <div class="activity-card">
-                    <img src="img/user1.png" class="user-img" alt="">
+                    <img src="{% static 'blog/img/user1.png' %}" class="user-img" alt="">
+                    <p class="activity"><b>@siri</b> liked your post</p>
+                    <img src="{% static 'blog/img/post1.png' %}" class="activity-post" alt="">
+                </div>
+                <div class="activity-card">
+                    <img src="{% static 'blog/img/user2.png' %}" class="user-img" alt="">
                     <p class="activity"><b>@siri</b> liked your post</p>
                     <img src="img/post1.png" class="activity-post" alt="">
                 </div>
                 <div class="activity-card">
-                    <img src="img/user2.png" class="user-img" alt="">
+                    <img src="{% static 'blog/img/user1.png' %}" class="user-img" alt="">
                     <p class="activity"><b>@siri</b> liked your post</p>
-                    <img src="img/post1.png" class="activity-post" alt="">
+                    <img src="{% static 'blog/img/post1.png' %}" class="activity-post" alt="">
                 </div>
                 <div class="activity-card">
-                    <img src="img/user1.png" class="user-img" alt="">
+                    <img src="{% static 'blog/img/user3.png' %}" class="user-img" alt="">
                     <p class="activity"><b>@siri</b> liked your post</p>
-                    <img src="img/post1.png" class="activity-post" alt="">
-                </div>
-                <div class="activity-card">
-                    <img src="img/user3.png" class="user-img" alt="">
-                    <p class="activity"><b>@siri</b> liked your post</p>
-                    <img src="img/post1.png" class="activity-post" alt="">
+                    <img src="{% static 'blog/img/post1.png' %}" class="activity-post" alt="">
                 </div>
             </div>
         </div>
-        <a href="#" class="nav-links"><img src="img/add-nofill.png" class="nav-icon" alt=""></a>
-        <a href="#" class="nav-links"><img src="img/profile-img.png" class="nav-icon user-profile" alt=""></a>
+        <a href="#" class="nav-links"><img src="{% static 'blog/img/add-nofill.png' %}" class="nav-icon" alt=""></a>
+        <a href="#" class="nav-links"><img src="{% static 'blog/img/profile-img.png' %}" class="nav-icon user-profile" alt=""></a>
     </div>
 </nav>
 
@@ -59,33 +59,28 @@
     <div class="post-container">
         <div class="post">
             <div class="post-header">
-                <img src="img/user2.png" class="user-icon" alt="">
+                <img src="{% static 'blog/img/user2.png' %}" class="user-icon" alt="">
                 <p class="username">@modernweb</p>
             </div>
             <div class="post-feed">
-                <div class="post-overlays">
-                    <img src="img/red-heart.png" class="like-icon" alt="">
-                    <div class="share-window">
-                        <h1 class="title">share the post with others</h1>
-                        <div class="share-link-container">
-                            <input type="text" id="share-link" value="https://www.socialize.com/post/234234234234" disabled>
-                            <button class="copy-btn">copy</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="post-img-container">
-                    <img src="img/post1.png" alt="">
-                    <img src="img/post2.png" alt="">
-                    <img src="img/post3.png" alt="">
-                    <img src="img/post4.png" alt="">
-                    <img src="img/post5.png" alt="">
-                </div>
+                <div class="flex flex-wrap">
+                    <img
+                    src="{{post.image.url}}"
+                    class="p-1 bg-white border rounded max-w-sm object-center mb-2"
+                    alt="..."
+                    style="margin-bottom:10px;"
+                  >
+                  
+                <h2 class="text-2xl font-medium text-gray-900 title-font mb-2"  style="margin-bottom:10px;">{{post.title}}</h2>
+                <p class="leading-relaxed">
+                    {{post.text}}
+                </p>
             </div>
             <div class="post-detail">
                 <div class="detail-intracables">
-                    <img src="img/heart-nofill.png" class="like-btn" alt="">
-                    <img src="img/send-nofill.png" class="send-btn" alt="">
-                    <img src="img/comment-nofill.png" class="comment-btn" alt="">
+                    <img src="{% static 'blog/img/heart-nofill.png' %}" class="like-btn" alt="">
+                    <img src="{% static 'blog/img/send-nofill.png' %}" class="send-btn" alt="">
+                    <img src="{% static 'blog/img/comment-nofill.png' %}" class="comment-btn" alt="">
                 </div>
                 <span class="likes">2.7k likes</span>
                 <p class="username">@modernweb</p>
@@ -103,7 +98,7 @@
     </div>
 </section>
 
-<script src="js/post.js"></script>
+<script src="{% static 'blog/js/post.js' %}"></script>
 
 
 

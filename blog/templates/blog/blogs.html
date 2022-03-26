@@ -38,30 +38,31 @@
 
 
       <section class="text-gray-600 body-font overflow-hidden">
-        <div class="container px-5 py-24 mx-auto">
-          <div class="-my-8 divide-y-2 divide-gray-100">
+        <div class="container px-1 py-24 mx-auto">
+          <div class="-my-8 divide-y-2 divide-gray-100 mx-5">
             <div class="py-8 flex flex-wrap md:flex-nowrap">
-              <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
+              <div class="mb-6 flex-shrink-0 flex flex-col">
                 <span class="font-semibold title-font text-gray-700"></span>
                 <span class="mt-1 text-gray-500 text-sm"></span>
               </div>
-              {% comment %} {% for post in posts %}
+              {% for post in posts %}
               <div class="md:flex-grow">
 
 
 
-                <div class="flex flex-wrap justify-left">
+                <div class="flex flex-wrap">
                     <img
                     src="{{post.image.url}}"
-                    class="p-1 bg-white border rounded max-w-sm"
+                    class="p-1 bg-white border rounded max-w-sm object-center"
                     alt="..."
-                  />
+                    style="width:20%;"
+                  >
                   
                 <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">{{post.title}}</h2>
                 <p class="leading-relaxed">
                     {{post.text|truncatechars:255}}
                 </p>
-                <a href="/post/{{post.slug}}" class="text-indigo-500 inline-flex items-center mt-4">Read More
+                <a href="/blog/post/{{post.slug}}" class="text-indigo-500 inline-flex items-center mt-4">Read More
                   <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M5 12h14"></path>
                     <path d="M12 5l7 7-7 7"></path>
@@ -70,80 +71,8 @@
                 </a>
               </div>
             </div>
-            {% endfor %} {% endcomment %}
-              <div class="md:flex-grow">
-
-
-
-                <div class="flex flex-wrap justify-left">
-                    <img
-                    src="https://image.freepik.com/free-photo/portrait-happy-young-gay-woman-holding-lgbt-rainbow-flag-focus-face_166273-867.jpg"
-                    class="p-1 bg-white border rounded max-w-sm"
-                    alt="..."
-                  />
-                  
-                <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">India’s finest drag queens who are breaking stereotypes and inspiring many</h2>
-                <p class="leading-relaxed">Did you know about the thriving drag culture in India? All thanks to Mr. Keshav Suri for giving all of them a huge platform to perform and also to bring International drag queens to perform in India. The Lalit Hotel hosts drag night every Thursday in Delhi, Mumbai and Bangalore and sometimes in Chandigarh and Kolkata, where a lot of local queens get to perform and also get a chance to share the stage with the International drag queens...
-                    
-                </p>
-                <a class="text-indigo-500 inline-flex items-center mt-4">Read More
-                  <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5l7 7-7 7"></path>
-                  </svg>
-                
-                </a>
-              </div>
-            </div>
-            <div class="py-8 flex flex-wrap md:flex-nowrap">
-              <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
-                <span class="font-semibold title-font text-gray-700"></span>
-                <span class="mt-1 text-gray-500 text-sm"></span>
-              </div>
-            </div>
-              <div class="md:flex-grow">
-
-
-
-                <div class="flex flex-wrap justify-left">
-                    <img
-                    src="https://imgk.timesnownews.com/story/1536325831-LGBTQ_IANS.jpg?tr=w-1200,h-900"
-                    class="p-1 bg-white border rounded max-w-sm"
-                    alt="..."
-                  />
-
-
-
-
-
-                <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">A tale of Endeavors and Serendipity</h2>
-                <p class="leading-relaxed">There are always certain questions that come to our minds when we think of love. How do we find love? How do we know that the person who we have chosen is the right one? And if everything goes well, how will our families accept our relationship and the immutable love that we have for each other? For some, the answers are readily available, but for some, they have to fight their battles. </p>
-                <a class="text-indigo-500 inline-flex items-center mt-4">Read More
-                  <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-            <div class="py-8 flex flex-wrap md:flex-nowrap">
-              <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
-                <span class="font-semibold title-font text-gray-700"></span>
-                <span class="text-sm text-gray-500"></span>
-              </div>
-            </div>
-
-              <div class="md:flex-grow">
-                  
-                <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">Celebrating 4 years of togetherness of our favourite couple!</h2>
-                <p class="leading-relaxed">Before we get to the couple goals, let’s get to know the guys a little better in their own words. Suresh Ramdas (SR)is tall, dark and handsome.He is bald with an infectious smile and a voice that’s soothing yet loud. Suresh, whose roots are from Tamil Nadu, was born in Mumbai and raised in various parts of Karnataka like Mysore and Manipal. Now he is residing in Bengaluru since 2003. A proud 38 years young guy who works in the...</p>
-                <a class="text-indigo-500 inline-flex items-center mt-4">Read More
-                  <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
-              </div>
+            {% endfor %}
+              
             </div>
           </div>
         </div>

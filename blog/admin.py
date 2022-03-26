@@ -6,12 +6,10 @@ from . import models
 
 @admin.register(models.Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ['title', 'slug', 'authorName', 'date', 'views', 'likesCount']
+    list_display = ['title', 'slug', 'authorName', 'date', 'views']
     def authorName(self, obj):
         return obj.author.user.username
-    
-    def likesCount(self, obj):
-        return len(obj.likes)
+
 
 @admin.register(models.Comment)
 class CommentAdmin(admin.ModelAdmin):
