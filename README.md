@@ -1,6 +1,8 @@
 # ProjectPrideUp
 # E-commerce and community for LGBTQ+
 
+PrideUp is a platform that aims to provide a safe space for the LGBTQ+ community sell everyday products, share their stories, and connect with others. In workplace, schools, and even in their own homes, members of the LGBTQ+ community often face discrimination and harassment. PrideUp is a platform that aims to provide a safe space for the LGBTQ+ community to foster their local business.
+
 Explanatory PDF
 https://drive.google.com/file/d/1JP9uqSpc89-1EOjhMeYBFQybzk6ubH3K/view?usp=sharing
 
